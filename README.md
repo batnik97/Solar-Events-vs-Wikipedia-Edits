@@ -25,6 +25,8 @@ To populate the Django Model with relevant data:
 
 1. Navigate to the `django-base-main` directory using `cd django-base-main`.
 2. Use the command `poetry run python manage.py import_csv ../events_data.csv` to import data from the provided CSV file.
+3. Make migrations for database changes `poetry run python manage.py makemigrations`.
+4. Apply migrations to the database `poetry run python manage.py migrate`.
 
 ## Running the Server
 
