@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wikipedia Revisions vs. Solar Events</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'pages/plot_events/style.css' %}">
+</head>
+<body>
+    <div id="container">
+        <h1>Wikipedia Revisions vs. Solar Events</h1>
+        <label for="titles">Wikipedia Titles:</label>
+        <input type="text" id="titles" name="titles" value="{{ default_titles|join:', ' }}">
+        
+        <label for="visualization-type">Visualization Type:</label>
+        <select id="visualization-type">
+            <option value="time_series" selected>Time Series</option>
+            <option value="bar_chart">Bar Chart</option>
+        </select>
+        
+        <div id="event-fields" style="display:none;">
+            <label for="event-names">Event Name:</label>
+            <select id="event-names"></select>
+            
+            <label for="days">Days After Event:</label>
+            <input type="number" id="days" name="days" value="15" min="0">
+        </div>
+        
+        <button onclick="fetchData()">Fetch Data</button>
+
+        <div id="plot"></div>
+        <div id="event-info" style="display:none;"></div>
+    </div>
+
+    {% load static %}
+    <script src="{% static 'pages/plot_events/script.js' %}"></script>
+</body>
+</html>
